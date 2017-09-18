@@ -1,0 +1,8 @@
+make own scanf
+figure out network protocol
+implement that protocol
+figure out nice led indications
+get adc working for ps2 controller
+get button reading done
+get SPI working for accel and gyro
+
