@@ -25,15 +25,19 @@ static esp_err_t connection_event_handler(void *ctx, system_event_t *event)
       switch(event->event_info.disconnected.reason){
             case AUTH_EXPIRE:
               ESP_LOGI(TAG, "Auth Expired");
+              goto RECON;
             break;
             case AUTH_FAIL:
               ESP_LOGI(TAG, "Auth Failed");
+              goto RECON;
             break;
             case NO_AP_FOUND:
               ESP_LOGI(TAG, "AP not Found");
+              goto RECON;
             break;
             default:
               ESP_LOGI(TAG, "Discon %d", event->event_info.disconnected.reason);
+RECON:
               esp_wifi_connect();
               xEventGroupClearBits(wifi_event_group, CONNECTED_BIT);
         }
