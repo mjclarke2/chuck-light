@@ -1,0 +1,39 @@
+echo -- Setting MAC address --
+setenv ethaddr 00:0a:35:c6:00:00
+
+echo -- Setting IP Address -- 
+setenv ipaddr 128.104.179.191
+
+echo -- Setting up host name --
+setenv hostname ECE453-06.ece.wisc.edu
+
+echo -- Setting TFTP Server IP --
+setenv serverip 128.104.178.168
+
+if test -n $net_boot; 
+then 
+  if itest $net_boot == 1; 
+  then 
+    echo !!!!!!!!!!!!!!!!!!!!!!!!!!;
+    echo ! Booting from TFTP      !;
+    echo !!!!!!!!!!!!!!!!!!!!!!!!!!;
+    tftp $fpgadata soc_system.rbf;
+  else 
+    echo !!!!!!!!!!!!!!!!!!!!!!!!!!;
+    echo ! Booting from SD        !;
+    echo !!!!!!!!!!!!!!!!!!!!!!!!!!;
+    fatload mmc 0:1 $fpgadata output_files/soc_system.rbf;
+  fi
+else 
+    echo !!!!!!!!!!!!!!!!!!!!!!!!!!;
+    echo  Booting from SD         !; 
+    echo !!!!!!!!!!!!!!!!!!!!!!!!!!;
+    fatload mmc 0:1 $fpgadata output_files/soc_system.rbf;
+fi
+
+fpga load 0 $fpgadata $filesize;
+setenv fdtimage soc_system.dtb;
+run bridge_enable_handoff;
+run mmcload;
+run mmcboot;
+
