@@ -122,3 +122,6 @@ _ngo/
 _xmsgs/
 
 # End of https://www.gitignore.io/api/modelsim,xilinxise,alteraquartusii
+
+# do track output files for ftp server
+!SoC/ece453/output_files/*
