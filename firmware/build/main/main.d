@@ -127,6 +127,11 @@ main.o: /home/ece453/Documents/ece453/chuck-light/firmware/main/./main.c \
  /home/ece453/Documents/ece453/chuck-light/firmware/main/./lib/data_controller.h \
  /home/ece453/Documents/ece453/chuck-light/firmware/main/./lib/led_controller.h \
  /home/ece453/Documents/ece453/chuck-light/firmware/main/./lib/motion_controllers.h \
+ /home/ece453/Documents/ece453/esp-idf/components/driver/include/driver/spi_master.h \
+ /home/ece453/Documents/ece453/esp-idf/components/driver/include/driver/spi_common.h \
+ /home/ece453/Documents/ece453/esp-idf/components/soc/esp32/include/soc/spi_struct.h \
+ /home/ece453/Documents/ece453/esp-idf/components/esp32/include/rom/lldesc.h \
+ /home/ece453/Documents/ece453/esp-idf/components/esp32/include/rom/queue.h \
  /home/ece453/Documents/ece453/chuck-light/firmware/main/./lib/ps2_controller.h \
  /home/ece453/Documents/ece453/esp-idf/components/driver/include/driver/adc.h \
  /home/ece453/Documents/ece453/esp-idf/components/soc/esp32/include/soc/adc_channel.h \
@@ -395,6 +400,16 @@ main.o: /home/ece453/Documents/ece453/chuck-light/firmware/main/./main.c \
 /home/ece453/Documents/ece453/chuck-light/firmware/main/./lib/led_controller.h:
 
 /home/ece453/Documents/ece453/chuck-light/firmware/main/./lib/motion_controllers.h:
+
+/home/ece453/Documents/ece453/esp-idf/components/driver/include/driver/spi_master.h:
+
+/home/ece453/Documents/ece453/esp-idf/components/driver/include/driver/spi_common.h:
+
+/home/ece453/Documents/ece453/esp-idf/components/soc/esp32/include/soc/spi_struct.h:
+
+/home/ece453/Documents/ece453/esp-idf/components/esp32/include/rom/lldesc.h:
+
+/home/ece453/Documents/ece453/esp-idf/components/esp32/include/rom/queue.h:
 
 /home/ece453/Documents/ece453/chuck-light/firmware/main/./lib/ps2_controller.h:
 

@@ -24,9 +24,9 @@ ps2_controller.o: \
  /home/ece453/Documents/ece453/esp-idf/components/newlib/include/stdlib.h \
  /home/ece453/Documents/ece453/esp-idf/components/newlib/include/machine/stdlib.h \
  /home/ece453/Documents/ece453/esp-idf/components/newlib/include/alloca.h \
- /home/ece453/Documents/ece453/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
  /home/ece453/Documents/ece453/esp-idf/components/newlib/include/stdint.h \
  /home/ece453/Documents/ece453/esp-idf/components/newlib/include/sys/_intsup.h \
+ /home/ece453/Documents/ece453/esp-idf/components/freertos/include/freertos/FreeRTOS.h \
  /home/ece453/Documents/ece453/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h \
  /home/ece453/Documents/ece453/chuck-light/firmware/build/include/sdkconfig.h \
  /home/ece453/Documents/ece453/esp-idf/components/freertos/include/freertos/xtensa_config.h \
@@ -134,11 +134,11 @@ ps2_controller.o: \
 
 /home/ece453/Documents/ece453/esp-idf/components/newlib/include/alloca.h:
 
-/home/ece453/Documents/ece453/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
-
 /home/ece453/Documents/ece453/esp-idf/components/newlib/include/stdint.h:
 
 /home/ece453/Documents/ece453/esp-idf/components/newlib/include/sys/_intsup.h:
+
+/home/ece453/Documents/ece453/esp-idf/components/freertos/include/freertos/FreeRTOS.h:
 
 /home/ece453/Documents/ece453/esp-idf/components/freertos/include/freertos/FreeRTOSConfig.h:
 

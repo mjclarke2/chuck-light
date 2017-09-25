@@ -1,10 +1,11 @@
-/*led_controller.h*/
-#ifndef LED_CONTROLLER_H
-#define LED_CONTROLLER_H
+/*ps2_controller.h*/
+#ifndef PS2_CONTROLLER_H
+#define PS2_CONTROLLER_H
 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -13,12 +14,13 @@
 #include "driver/adc.h"
 #include "esp_log.h"
 
+#define X_PIN 34
+#define Y_PIN 35
+#define Z_PIN 32 //for refrence only - PS2 button controlled in button_controllers
+
 void init_ps2_controller(void);
 
-int read_x_y(void);
-
-//read direction
-
-//read rgb
+void read_xy(int *ret_val);
+void read_rgb(uint8_t *ret_val);
 
 #endif

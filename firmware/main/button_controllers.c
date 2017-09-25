@@ -1,10 +1,8 @@
 /*button_controllers.c*/
 #include "lib/button_controllers.h"
 
-#define PS2_PIN    32
-#define B1_PIN     26
-#define B2_PIN     27
-#define GPIO_INPUT_PIN_SEL (GPIO_SEL_32 | GPIO_SEL_26 | GPIO_SEL_27)
+#define TAG "Button Controllers"
+
 #define DEBOUNCE_COUNT 3
 
 void init_button_controllers()
