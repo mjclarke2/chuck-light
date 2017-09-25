@@ -113,7 +113,7 @@ RECON:
     return ESP_OK;
 }
 
-void initialise_wifi(void)
+void init_connection_controller(void)
 {
     wifi_config_t wifi_config;
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();

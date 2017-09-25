@@ -130,7 +130,15 @@ main.o: /home/ece453/Documents/ece453/chuck-light/firmware/main/./main.c \
  /home/ece453/Documents/ece453/chuck-light/firmware/main/./lib/ps2_controller.h \
  /home/ece453/Documents/ece453/esp-idf/components/driver/include/driver/adc.h \
  /home/ece453/Documents/ece453/esp-idf/components/soc/esp32/include/soc/adc_channel.h \
- /home/ece453/Documents/ece453/chuck-light/firmware/main/./lib/serial_controller.h
+ /home/ece453/Documents/ece453/chuck-light/firmware/main/./lib/serial_controller.h \
+ /home/ece453/Documents/ece453/chuck-light/firmware/main/./lib/timer_controller.h \
+ /home/ece453/Documents/ece453/esp-idf/components/soc/esp32/include/soc/timer_group_struct.h \
+ /home/ece453/Documents/ece453/esp-idf/components/driver/include/driver/periph_ctrl.h \
+ /home/ece453/Documents/ece453/esp-idf/components/soc/esp32/include/soc/dport_reg.h \
+ /home/ece453/Documents/ece453/esp-idf/components/soc/esp32/include/soc/dport_access.h \
+ /home/ece453/Documents/ece453/esp-idf/components/esp32/include/esp_dport_access.h \
+ /home/ece453/Documents/ece453/esp-idf/components/driver/include/driver/timer.h \
+ /home/ece453/Documents/ece453/esp-idf/components/soc/esp32/include/soc/timer_group_reg.h
 
 /home/ece453/Documents/ece453/esp-idf/components/newlib/include/stdio.h:
 
@@ -395,4 +403,20 @@ main.o: /home/ece453/Documents/ece453/chuck-light/firmware/main/./main.c \
 /home/ece453/Documents/ece453/esp-idf/components/soc/esp32/include/soc/adc_channel.h:
 
 /home/ece453/Documents/ece453/chuck-light/firmware/main/./lib/serial_controller.h:
+
+/home/ece453/Documents/ece453/chuck-light/firmware/main/./lib/timer_controller.h:
+
+/home/ece453/Documents/ece453/esp-idf/components/soc/esp32/include/soc/timer_group_struct.h:
+
+/home/ece453/Documents/ece453/esp-idf/components/driver/include/driver/periph_ctrl.h:
+
+/home/ece453/Documents/ece453/esp-idf/components/soc/esp32/include/soc/dport_reg.h:
+
+/home/ece453/Documents/ece453/esp-idf/components/soc/esp32/include/soc/dport_access.h:
+
+/home/ece453/Documents/ece453/esp-idf/components/esp32/include/esp_dport_access.h:
+
+/home/ece453/Documents/ece453/esp-idf/components/driver/include/driver/timer.h:
+
+/home/ece453/Documents/ece453/esp-idf/components/soc/esp32/include/soc/timer_group_reg.h:
 /home/ece453/Documents/ece453/chuck-light/firmware/main/./main.c:

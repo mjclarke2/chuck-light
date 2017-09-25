@@ -19,8 +19,6 @@
 #define B1 4
 #define B2 8
 
-#define DEBOUNCE_COUNT 9
-
 void init_button_controllers(void);
 
 //read_button - if detected debounce

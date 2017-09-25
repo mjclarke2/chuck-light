@@ -25,7 +25,7 @@
 #define NO_AP_FOUND 201
 
 static esp_err_t connection_event_handler(void *ctx, system_event_t *event);
-void initialise_wifi(void);
+void init_connection_controller(void);
 void printConnectionInfo(void);
 
 #endif

@@ -5,6 +5,7 @@
 #define B1_PIN     26
 #define B2_PIN     27
 #define GPIO_INPUT_PIN_SEL (GPIO_SEL_32 | GPIO_SEL_26 | GPIO_SEL_27)
+#define DEBOUNCE_COUNT 3
 
 void init_button_controllers()
 {
@@ -28,45 +29,85 @@ void init_button_controllers()
 uint8_t read_button()
 {
   uint8_t i;
+  static int ps2_count = 0;
+  static int b1_count = 0;
+  static int b2_count = 0;
+  static int b12_count = 0;
 
   //B1 + B2 pressed
   if(!gpio_get_level(B1_PIN) && !gpio_get_level(B2_PIN))
   {
-    for(i = 0; i < DEBOUNCE_COUNT; i++){;;}
-    if(gpio_get_level(B1_PIN) && gpio_get_level(B2_PIN))
+    if(b12_count == -1)
+      return 0;
+
+    if(b12_count++ > DEBOUNCE_COUNT)
+    {
+      b12_count = -1;
       return B1 + B2;
+    }
     else
       return 0;
+  }
+  else
+  {
+    b12_count = 0;
   }
 
   //B1 pressed
   if(!gpio_get_level(B1_PIN))
   {
-    for(i = 0; i < DEBOUNCE_COUNT; i++){;;}
-    if(gpio_get_level(B1_PIN))
+    if(b1_count == -1)
+      return 0;
+
+    if(b1_count++ > DEBOUNCE_COUNT)
+    {
+      b1_count = -1;
       return B1;
+    }
     else
       return 0;
+  }
+  else
+  {
+    b1_count = 0;
   }
 
   //B2 pressed
   if(!gpio_get_level(B2_PIN))
   {
-    for(i = 0; i < DEBOUNCE_COUNT; i++){;;}
-    if(gpio_get_level(B2_PIN))
+    if(b2_count == -1)
+      return 0;
+
+    if(b2_count++ > DEBOUNCE_COUNT)
+    {
+      b2_count = -1;
       return B2;
+    }
     else
       return 0;
+  }
+  else
+  {
+    b2_count = 0;
   }
 
   //PS2 pressed
   if(!gpio_get_level(PS2_PIN))
   {
-    for(i = 0; i < DEBOUNCE_COUNT; i++){;;}
-    if(gpio_get_level(PS2_PIN))
+    if(ps2_count == -1)
+      return 0;
+
+    if(ps2_count++ > DEBOUNCE_COUNT)
+    {
+      ps2_count = -1;
       return PS2_B;
+    }
     else
       return 0;
+  }
+  else
+  {
+    ps2_count = 0;
   }
 
   return 0;

@@ -15,12 +15,11 @@
 #include "lib/motion_controllers.h"
 #include "lib/ps2_controller.h"
 #include "lib/serial_controller.h"
+#include "lib/timer_controller.h"
 
 #define TAG "Main"
 
-extern uint8_t PS2_PRESSED;
-extern uint8_t TOP_PRESSED;
-extern uint8_t BOTTOM_PRESSED;
+extern uint8_t DEBOUNCE_TICK;
 
 void app_main()
 {
@@ -29,9 +28,10 @@ void app_main()
     ESP_ERROR_CHECK( nvs_flash_init() );
 
     /* ------------- Init Functions --------------*/
-    initialise_wifi();
+    init_connection_controller();
     init_ps2_controller();
     init_button_controllers();
+    init_timer_controller();
 
     //TODO UDP Listhener listens to modes
 
@@ -46,30 +46,30 @@ void app_main()
 
       //TODO add a serial terminal
       //printConnectionInfo();
-      switch(read_button())
+      //TODO if(TIMER){ the button read
+      if(DEBOUNCE_TICK)
       {
-        case 0:
-          //do nothing - no button was pressed
-          //ESP_LOGI(TAG, "NOTHING");
-        break;
-        case B1:
-          ESP_LOGI(TAG, "B1 Pressed");
-        break;
-        case B2:
-          ESP_LOGI(TAG, "B2 Pressed");
-        break;
-        case B1 + B2:
-          ESP_LOGI(TAG, "B1 + B2 Pressed");
-        break;
-        case PS2_B:
-          ESP_LOGI(TAG, "PS2 Pressed");
-        break;
+        switch(read_button())
+        {
+          case 0:
+            //do nothing - no button was pressed
+            //ESP_LOGI(TAG, "NOTHING");
+          break;
+          case B1:
+            ESP_LOGI(TAG, "B1 Pressed");
+          break;
+          case B2:
+            ESP_LOGI(TAG, "B2 Pressed");
+          break;
+          case B1 + B2:
+            ESP_LOGI(TAG, "B1 + B2 Pressed");
+          break;
+          case PS2_B:
+            ESP_LOGI(TAG, "PS2 Pressed");
+          break;
+        }
+
+        DEBOUNCE_TICK = 0;
       }
-      if(i++ > 300)
-      {
-        ESP_LOGI(TAG, "HI");
-        i = 0;
-      }
-      //vTaskDelay(1);
     }
 }
