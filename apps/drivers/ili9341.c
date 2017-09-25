@@ -52,10 +52,16 @@ static void pabort(const char *s)
 static void ili9341_rst_reset(void)
 {
   // Read the current value of the GPIO_OUT_REG
-
+  int reg_val = ece453_reg_read(GPIO_OUT_REG);
+  if (reg_val == -1)
+    pabort("ili9341.c::ili9341_rst_reset: Unable to read GPIO out");
+  
   // Set RST to be 0
+  reg_val = reg_val & (~GPIO_OUT_LCD_RST_MASK);
   
   // Write the value back out 
+  if (ece453_reg_write(GPIO_OUT_REG, reg_val) == -1)
+    pabort("ili9341.c::ili9341_rst_reset: Unable to write GPIO out");
   
 }
 
@@ -65,13 +71,17 @@ static void ili9341_rst_reset(void)
 //*****************************************************************************
 static void ili9341_rst_set(void)
 {
- 
   // Read the current value of the GPIO_OUT_REG
-
+  int reg_val = ece453_reg_read(GPIO_OUT_REG);
+  if (reg_val == -1)
+    pabort("ili9341.c::ili9341_rst_set: Unable to read GPIO out");
+  
   // Set RST to be 1
+  reg_val = reg_val & GPIO_OUT_LCD_RST_MASK;
   
   // Write the value back out 
-  
+  if (ece453_reg_write(GPIO_OUT_REG, reg_val) == -1)
+    pabort("ili9341.c::ili9341_rst_set: Unable to write GPIO out");
 }
 
 //*****************************************************************************
@@ -81,10 +91,16 @@ static void ili9341_rst_set(void)
 static void ili9341_cmd_reset(void)
 {
   // Read the current value of the GPIO_OUT_REG
-
-  // Set CMD to be 0
+  int reg_val = ece453_reg_read(GPIO_OUT_REG);
+  if (reg_val == -1)
+    pabort("ili9341.c::ili9341_cmd_reset: Unable to read GPIO out");
   
-  // Write the value back out 
+  // Set CMD to be 0
+  reg_val = reg_val & (~GPIO_OUT_LCD_CMD_MASK);
+  
+  // Write the value back out
+  if (ece453_reg_write(GPIO_OUT_REG, reg_val) == -1)
+    pabort("ili9341.c::ili9341_cmd_reset: Unable to write GPIO out");
 }
 
 //*****************************************************************************
@@ -97,10 +113,16 @@ static void ili9341_cmd_reset(void)
 static void ili9341_cmd_set(void)
 {
   // Read the current value of the GPIO_OUT_REG
+  int reg_val = ece453_reg_read(GPIO_OUT_REG);
+  if (reg_val == -1)
+    pabort("ili9341.c::ili9341_cmd_set: Unable to read GPIO out");
 
   // Set CMD to be 1
-  
-  // Write the value back out 
+  reg_val = reg_val & GPIO_OUT_LCD_CMD_MASK;
+
+  // Write the value back out
+  if (ece453_reg_write(GPIO_OUT_REG, reg_val) == -1)
+    pabort("ili9341.c::ili9341_cmd_set: Unable to write GPIO out");
 }
 
 //*****************************************************************************
@@ -109,10 +131,16 @@ static void ili9341_cmd_set(void)
 void ili9341_bl_reset(void)
 {
   // Read the current value of the GPIO_OUT_REG
+  int reg_val = ece453_reg_read(GPIO_OUT_REG);
+  if (reg_val == -1)
+    pabort("ili9341.c::ili9341_bl_reset: Unable to read GPIO out");
 
   // Set Back Light to be 0
-  
-  // Write the value back out 
+  reg_val = reg_val & (~GPIO_OUT_LCD_BCK_LITE_MASK);
+
+  // Write the value back out
+  if (ece453_reg_write(GPIO_OUT_REG, reg_val) == -1)
+    pabort("ili9341.c::ili9341_bl_reset: Unable to write GPIO out");
 }
 
 //*****************************************************************************
@@ -121,11 +149,17 @@ void ili9341_bl_reset(void)
 void ili9341_bl_set(void)
 {
   // Read the current value of the GPIO_OUT_REG
+  int reg_val = ece453_reg_read(GPIO_OUT_REG);
+  if (reg_val == -1)
+    pabort("ili9341.c::ili9341_bl_set: Unable to read GPIO out");
 
   // Set Back Light to be 1
-  
-  // Write the value back out 
+  reg_val = reg_val & GPIO_OUT_LCD_BCK_LITE_MASK;
 
+  // Write the value back out
+  if (ece453_reg_write(GPIO_OUT_REG, reg_val) == -1)
+    pabort("ili9341.c::ili9341_bl_set: Unable to write GPIO out");
+  
 }
 
 //*****************************************************************************
