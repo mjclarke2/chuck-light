@@ -38,16 +38,11 @@
 
 #define I2C_DEV "/dev/i2c-2"
 
-// ADD CODE
-#define AT42QT2120_SLAVE_ADDR                     0x00
-
-#define AT42QT2120_CHIP_ID_REG                    0
-
-// ADD CODDE
-#define AT42QT2120_KEY_STATUS_LO_REG              0
-
-// ADD CODDE
-#define AT42QT2120_KEY_STATUS_HI_REG              0
+// Added in lab 3:
+#define AT42QT2120_SLAVE_ADDR                     0x1C
+#define AT42QT2120_CHIP_ID_REG                    0x00
+#define AT42QT2120_KEY_STATUS_LO_REG              0x03
+#define AT42QT2120_KEY_STATUS_HI_REG              0x04
 
 //*****************************************************************************
 //*****************************************************************************

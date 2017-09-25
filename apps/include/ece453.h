@@ -86,6 +86,11 @@
 #define CONTROL_WS2812B_START_BIT_NUM       0
 #define CONTROL_WS2812B_START_MASK          (0x1 << CONTROL_WS2812B_START_BIT_NUM)
 
+/**
+ * Print error message s and exit.
+ **/
+void pabort(const char *s);
+
 //*****************************************************************************
 //*****************************************************************************
 int ece453_reg_read(char *reg_name);

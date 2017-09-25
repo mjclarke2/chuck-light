@@ -36,15 +36,6 @@ void TM_ILI9341_SendCommand(uint8_t data);
 void TM_ILI9341_Delay(volatile unsigned int delay);
 void TM_ILI9341_SetCursorPosition(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
 
-
-//*****************************************************************************
-//*****************************************************************************
-static void pabort(const char *s)
-{
-	perror(s);
-	abort();
-}
-
 //*****************************************************************************
 // Use the GPIO port connected to the LCD Reset line to hold the 
 // LCD in reset.  The signal is active low.  
