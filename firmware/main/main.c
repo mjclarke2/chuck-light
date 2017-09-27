@@ -15,61 +15,71 @@
 #include "lib/motion_controllers.h"
 #include "lib/ps2_controller.h"
 #include "lib/serial_controller.h"
+#include "lib/timer_controller.h"
 
 #define TAG "Main"
 
-extern uint8_t PS2_PRESSED;
-extern uint8_t TOP_PRESSED;
-extern uint8_t BOTTOM_PRESSED;
+extern uint8_t DEBOUNCE_TICK;
+
+uint8_t buf[4];
 
 void app_main()
 {
-    char buf[32];
-    int i;
-    ESP_ERROR_CHECK( nvs_flash_init() );
-
     /* ------------- Init Functions --------------*/
-    initialise_wifi();
+    ESP_ERROR_CHECK( nvs_flash_init() );
+    init_connection_controller();
+    init_led_controller();
     init_ps2_controller();
+    init_motion_controllers();
     init_button_controllers();
+    init_timer_controller();
 
     //TODO UDP Listhener listens to modes
 
-    //xTaskCreatePinnedToCore(&read_x_y, "PS2", 2048, NULL, tskIDLE_PRIORITY, NULL, 0); //pinned to core 0
 
 
-    ESP_LOGI(TAG, "-... . . .--.")
     /* ------------- Main Loop -------------------*/
+    ESP_LOGI(TAG, "-... . . .--.");
     while(1)
     {
 
 
       //TODO add a serial terminal
       //printConnectionInfo();
-      switch(read_button())
+      //TODO if(TIMER){ the button read
+      if(DEBOUNCE_TICK)
       {
-        case 0:
-          //do nothing - no button was pressed
-          //ESP_LOGI(TAG, "NOTHING");
-        break;
-        case B1:
-          ESP_LOGI(TAG, "B1 Pressed");
-        break;
-        case B2:
-          ESP_LOGI(TAG, "B2 Pressed");
-        break;
-        case B1 + B2:
-          ESP_LOGI(TAG, "B1 + B2 Pressed");
-        break;
-        case PS2_B:
-          ESP_LOGI(TAG, "PS2 Pressed");
-        break;
+        switch(read_button())
+        {
+          case 0:
+            //do nothing - no button was pressed
+            //ESP_LOGI(TAG, "NOTHING");
+          break;
+          case B1:
+            ESP_LOGI(TAG, "B1 Pressed");
+            set_red(HIGH);
+          break;
+          case B2:
+            ESP_LOGI(TAG, "B2 Pressed");
+            set_green(HIGH);
+          break;
+          case B1 + B2:
+            ESP_LOGI(TAG, "B1 + B2 Pressed");
+            set_red(LOW);
+            set_green(LOW);
+            set_blue(LOW);
+          break;
+          case PS2_B:
+            ESP_LOGI(TAG, "PS2 Pressed");
+            set_blue(HIGH);
+          break;
+        }
+
+        DEBOUNCE_TICK = 0;
+        read_motion(buf);
+        if(buf[0] != 69)
+          ESP_LOGI(TAG, "%d", buf[0]);
       }
-      if(i++ > 300)
-      {
-        ESP_LOGI(TAG, "HI");
-        i = 0;
-      }
-      //vTaskDelay(1);
+
     }
 }

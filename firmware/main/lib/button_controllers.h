@@ -13,13 +13,14 @@
 #include "driver/gpio.h"
 #include "esp_log.h"
 
-#define TAG "Button Controllers"
+#define PS2_PIN    32
+#define B1_PIN     26
+#define B2_PIN     27
+#define GPIO_INPUT_PIN_SEL (GPIO_SEL_32 | GPIO_SEL_26 | GPIO_SEL_27)
 
 #define PS2_B 2
 #define B1 4
 #define B2 8
-
-#define DEBOUNCE_COUNT 9
 
 void init_button_controllers(void);
 
