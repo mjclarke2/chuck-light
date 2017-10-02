@@ -1,0 +1,7 @@
+LSM6DS3 -> ESP32
+
+Pin 1 -> Pin 25 MISO
+14 -> 23 MOSI
+13 -> 19 SPI CLK
+12 -> 22 CS
+4 -> 32 Interrupt
